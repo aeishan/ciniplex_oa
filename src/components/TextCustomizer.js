@@ -2,21 +2,21 @@ import React, { useEffect, useState } from 'react';
 
 const TextCustomizer = ({colours, fontSizes, fonts}) => {
 
-    useEffect(() => {
-        if (fonts.customFont) {
-        document.documentElement.style.setProperty("--days-number-font", fonts.customFont);  
-        document.documentElement.style.setProperty("--days-label-font", fonts.customFont);
+    // useEffect(() => {
+    //     if (fonts.customFont) {
+    //     document.documentElement.style.setProperty("--days-number-font", fonts.customFont);  
+    //     document.documentElement.style.setProperty("--days-label-font", fonts.customFont);
 
-        document.documentElement.style.setProperty("--hours-number-font", fonts.customFont);  
-        document.documentElement.style.setProperty("--hours-label-font", fonts.customFont);
+    //     document.documentElement.style.setProperty("--hours-number-font", fonts.customFont);  
+    //     document.documentElement.style.setProperty("--hours-label-font", fonts.customFont);
 
-        document.documentElement.style.setProperty("--minutes-number-font", fonts.customFont);  
-        document.documentElement.style.setProperty("--minutes-label-font", fonts.customFont);
+    //     document.documentElement.style.setProperty("--minutes-number-font", fonts.customFont);  
+    //     document.documentElement.style.setProperty("--minutes-label-font", fonts.customFont);
 
-        document.documentElement.style.setProperty("--seconds-number-font", fonts.customFont);  
-        document.documentElement.style.setProperty("--seconds-label-font", fonts.customFont);
-        }
-    }, [fonts.customFont]);
+    //     document.documentElement.style.setProperty("--seconds-number-font", fonts.customFont);  
+    //     document.documentElement.style.setProperty("--seconds-label-font", fonts.customFont);
+    //     }
+    // }, [fonts.customFont]);
     
 
     useEffect(() => {
@@ -51,7 +51,7 @@ const TextCustomizer = ({colours, fontSizes, fonts}) => {
         document.documentElement.style.setProperty("--hours-label-font", fonts.hoursLabelFont);
 
         document.documentElement.style.setProperty("--minutes-number-font", fonts.minutesNumFont);  
-        document.documentElement.style.setProperty("--minutes-label-font", fontSizes.minutesLabelFont);
+        document.documentElement.style.setProperty("--minutes-label-font", fonts.minutesLabelFont);
 
         document.documentElement.style.setProperty("--seconds-number-font", fonts.secondsNumFont);  
         document.documentElement.style.setProperty("--seconds-label-font", fonts.secondsLabelFont);
