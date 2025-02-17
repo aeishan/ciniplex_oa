@@ -1,70 +1,133 @@
-# Getting Started with Create React App
+# 🎬 Ciniplex Countdown Timer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Project Preview](https://via.placeholder.com/1000x300?text=Ciniplex+Countdown+Timer)
 
-## Available Scripts
+A **customizable countdown timer** built with **React**, featuring real-time updates, draggable elements, dynamic styling, and user preferences stored in **localStorage**. The app allows users to upload a **background image or video**, customize colors, fonts, and font sizes for the countdown, and dynamically set dates and times.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🕰 **Real-time Countdown** - Displays days, hours, minutes, and seconds dynamically updating.
+- 🎨 **Customizable UI** - Users can select fonts, colors, and font sizes for different elements.
+- 🖼 **Background Upload** - Supports both **.png** images and **.mp4** videos.
+- 🎭 **Draggable Components** - Each countdown section (Days, Hours, Minutes, Seconds) can be moved independently.
+- 💾 **Persistent Settings** - Custom settings (fonts, colors, background, etc.) are saved in `localStorage`.
+- 📅 **Date Picker Integration** - Users can select a date and time using `react-datepicker`, with restrictions on past dates.
+- 📏 **Sidebar Toggle** - Users can **hide or show the sidebar** for a full-screen experience.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📸 Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### **Default Countdown View**
 
-### `npm run build`
+![Default View](https://via.placeholder.com/800x400?text=Default+View)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **Customizable Settings Panel**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Customization Panel](https://via.placeholder.com/800x400?text=Customization+Panel)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **Draggable Countdown Blocks**
 
-### `npm run eject`
+![Draggable Countdown](https://via.placeholder.com/800x400?text=Draggable+Countdown)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠 Tech Stack
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+| **Technology**   | **Purpose**                     |
+| ---------------- | ------------------------------- |
+| React            | Frontend Framework              |
+| React-Draggable  | Makes countdown blocks movable  |
+| React-DatePicker | Handles date and time selection |
+| LocalStorage     | Saves user preferences          |
+| CSS Variables    | Enables dynamic styling         |
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 📥 Installation & Setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### **1️⃣ Clone the Repository**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+$ git clone https://github.com/aeishan/ciniplex_oa.git
+$ cd ciniplex_oa
+```
 
-### Code Splitting
+### **2️⃣ Install Dependencies**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```sh
+$ npm install
+```
 
-### Analyzing the Bundle Size
+### **3️⃣ Start the Development Server**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```sh
+$ npm start
+```
 
-### Making a Progressive Web App
+This will start the app at `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🎨 Customization Options
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+| Feature          | How to Customize                                                 |
+| ---------------- | ---------------------------------------------------------------- |
+| Background       | Upload **.png** images or **.mp4** videos                        |
+| Font Selection   | Choose from built-in fonts (Arial, Courier, Verdana, etc.)       |
+| Font Size        | Adjust using number inputs for days, hours, minutes, and seconds |
+| Colors           | Use color pickers to change number and label colors              |
+| Draggable Blocks | Drag and reposition countdown blocks anywhere on the screen      |
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🛠 Project Structure
 
-### `npm run build` fails to minify
+```
+📦 ciniplex_oa
+├── 📂 src
+│   ├── 📂 components
+│   │   ├── 📄 CountdownTimer.js  # Main countdown logic
+│   │   ├── 📄 VideoUploader.js    # Handles background uploads
+│   │   ├── 📄 TextCustomizer.js   # Dynamically updates fonts & colors
+│   ├── 📄 App.js                 # Main entry point
+│   ├── 📄 index.js               # React render logic
+├── 📄 index.css                  # Styling and layout
+├── 📄 package.json               # Dependencies & scripts
+├── 📄 README.md                  # You are here!
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 📝 To-Do List
+
+- [ ] Add support for **custom font uploads** 🎭
+- [ ] Improve **mobile responsiveness** 📱
+- [ ] Implement **pre-set themes** for quick styling 🎨
+
+---
+
+## 👨‍💻 Contributing
+
+We welcome contributions! If you'd like to improve the project, feel free to:
+
+1. **Fork** the repository
+2. **Create a new branch** (`feature/new-feature`)
+3. **Make your changes** and commit them
+4. **Submit a pull request** 🚀
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**. Feel free to use and modify it as you wish.
+
+---
+
+## 📬 Contact
+
+For any questions or feature requests, feel free to reach out:
+📧 Email: **your-email@example.com**  
+🐙 GitHub: [@aeishan](https://github.com/aeishan)
