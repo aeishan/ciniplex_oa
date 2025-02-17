@@ -86,24 +86,24 @@ const CountdownTimer = ({ selectedDate }) => {
 
     return (
         <div className="timer">
-            <div className="timerContainer">
-                <DraggableBox id="days">
-                    <h2 className="daysLabel">Days</h2>
-                    <p className="daysNum">{timer.days}</p>
-                </DraggableBox>
-                <DraggableBox id="hours">
-                    <h2 className="hoursLabel">Hours</h2>
-                    <p className="hoursNum">{timer.hours}</p>
-                </DraggableBox>
-                <DraggableBox id="minutes">
-                    <h2 className="minutesLabel">Minutes</h2>
-                    <p className="minutesNum">{timer.minutes}</p>
-                </DraggableBox>
-                <DraggableBox id="seconds">
-                    <h2 className="secondsLabel">Seconds</h2>
-                    <p className="secondsNum">{timer.seconds}</p>
-                </DraggableBox>
-            </div>
+            {/* <div className="timerContainer"> */}
+            <DraggableBox id="days">
+                <h2 className="daysLabel">Days</h2>
+                <p className="daysNum">{timer.days}</p>
+            </DraggableBox>
+            <DraggableBox id="hours">
+                <h2 className="hoursLabel">Hours</h2>
+                <p className="hoursNum">{timer.hours}</p>
+            </DraggableBox>
+            <DraggableBox id="minutes">
+                <h2 className="minutesLabel">Minutes</h2>
+                <p className="minutesNum">{timer.minutes}</p>
+            </DraggableBox>
+            <DraggableBox id="seconds">
+                <h2 className="secondsLabel">Seconds</h2>
+                <p className="secondsNum">{timer.seconds}</p>
+            </DraggableBox>
+            {/* </div> */}
         </div>
     );
 };

@@ -37,7 +37,7 @@ code {
   --seconds-number-font-size: 60px;
   --seconds-label-font-size: 26px;
 
-  /* --days-number-font: 'Courier New';
+  --days-number-font: 'Courier New';
   --days-label-font: -apple-system;
 
   --hours-number-font: 'Courier New';
@@ -52,7 +52,7 @@ code {
   --number-font-family: 'Courier New', Courier, monospace;
   --label-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif; */
+  sans-serif;
   
 }
 
@@ -79,17 +79,17 @@ code {
   width: 100%; /* Make it responsive */
   text-align: center;
 }
-
-.timerContainer {
-  display: flex;
-  justify-content: center; /* Center all items */
-  align-items: center;
-  gap: 40px; /* Increase spacing between boxes */
+/* 
+.timerContainer { */
+  /* display: flex; */
+  /* justify-content: center; Center all items */
+  /* align-items: center; */
+  /* gap: 40px; Increase spacing between boxes */
   /* background: rgba(0, 0, 0, 0.7); */
-  padding: 30px 50px; /* Increase padding for a bigger background box */
-  border-radius: 15px;
+  /* padding: 30px 50px; Increase padding for a bigger background box */
+  /* border-radius: 15px; */
   /* box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6); */
-}
+/* } */
 
 .timerBackground {  /* make draggbale  and maybe combine with timerbox to simplify*/
   background: rgba(0, 0, 0, 0.7);
@@ -129,56 +129,56 @@ code {
   /* font-size: var(--days-label-font-size); */
   font-weight: bold;
   /* color: var(--days-number-colour); */
-  font-family: 'Courier New', Courier, monospace;
+  /* font-family: 'Courier New', Courier, monospace; */
 }
 
 .daysLabel {
   color: var(--days-label-colour);
   font-size: var(--days-label-font-size);
-  /* font-family: var(--days-label-font, var(--number-label-family)); */
+  font-family: var(--days-label-font, var(--label-font-family));
 }
 
 .daysNum {
   color: var(--days-number-colour);
   font-size: var(--days-number-font-size);
-  /* font-family: var(--days-number-font, var(--number-font-family)); */
+  font-family: var(--days-number-font, var(--number-font-family));
 }
 
 
 .hoursLabel {
   color: var(--hours-label-colour);
   font-size: var(--hours-label-font-size);
-  /* font-family: var(--days-label-font, var(--label-font-family)); */
+  font-family: var(--hours-label-font, var(--label-font-family));
 }
 
 .minutesLabel {
   color: var(--minutes-label-colour);
   font-size: var(--minutes-label-font-size);
-  /* font-family: var(--days-label-font, var(--label-font-family)); */
+  font-family: var(--minutes-label-font, var(--label-font-family));
 }
 
 .secondsLabel {
   color: var(--seconds-label-colour);
   font-size: var(--seconds-label-font-size);
-  /* font-family: var(--days-label-font, var(--label-font-family)); */
+  font-family: var(--seconds-label-font, var(--label-font-family));
 }
 
 .hoursNum {
   color: var(--hours-number-colour);
   font-size: var(--hours-number-font-size);
-  /* font-family: var(--days-number-font, var(--number-font-family)); */
+  font-family: var(--hours-number-font, var(--number-font-family));
 }
 
 .minutesNum {
   color: var(--minutes-number-colour);
   font-size: var(--minutes-number-font-size);
-  /* font-family: var(--days-number-font, var(--number-font-family)); */
+  font-family: var(--minutes-number-font, var(--number-font-family));
 }
 
 .secondsNum {
   color: var(--seconds-number-colour);
   font-size: var(--seconds-number-font-size);
-  /* font-family: var(--days-number-font, var(--number-font-family)); */
+  font-family: var(--seconds-number-font, var(--number-font-family));
 }
 
 .fileBg {
@@ -191,7 +191,7 @@ code {
   z-index: -1;  /* makes video as the background */
 }
 
-.img-bg{
+/* .img-bg{
   position: fixed;
   top: 0;
   left: 0;
@@ -199,7 +199,7 @@ code {
   height: 100vh;
   object-fit: fill;
   z-index: -1;
-}
+} */
 
 .videoUploader {
   display: flex;

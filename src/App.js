@@ -77,24 +77,27 @@ const storeBackground = (file) => {
       secondsLabelFS: "26px"
     })
   );
+  const numberFonts = "'Courier New', Courier, monospace";
+  const labelFonts = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif";
 
   const [isSidebarVisible, setIsSidebarVisible] = useState(loadFromLocalStorage("isSidebarVisible", true));
-  // const [fonts, setFonts] = useState(
-  //   loadFromLocalStorage("fonts", {
-  //     daysNumFont: 'Courier New',
-  //     daysLabelFont: "-apple-system",
-  //     hoursNumFont: 'Courier New',
-  //     hoursLabelFont: "-apple-system",
-  //     minutesNumFont: 'Courier New',
-  //     minutesLabelFont: "-apple-system",
-  //     secondsNumFont: 'Courier New',
-  //     secondsLabelFont: "-apple-system"
-  //   })
-  // );
+  const [fonts, setFonts] = useState(
+    loadFromLocalStorage("fonts", {
+      daysNumFont: numberFonts,
+      daysLabelFont: labelFonts,
+      hoursNumFont: numberFonts,
+      hoursLabelFont: labelFonts,
+      minutesNumFont: numberFonts,
+      minutesLabelFont: labelFonts,
+      secondsNumFont: numberFonts,
+      secondsLabelFont: labelFonts
+    })
+  );
+  
 
-  // useEffect(() => {
-  //   localStorage.setItem("fonts", JSON.stringify(fonts));
-  // }, [fonts]);
+  useEffect(() => {
+    localStorage.setItem("fonts", JSON.stringify(fonts));
+  }, [fonts]);
 
 
   // Save settings whenever they change
@@ -203,47 +206,81 @@ const storeBackground = (file) => {
 
           <h1>Select Fonts for Each Section</h1>
 
-{/* <label>Days Font</label>
+<label>Days Font</label>
 <div>
-<select onChange={(e) => setFonts(prev => ({ ...prev, daysNumFont: e.target.value, daysLabelFont: e.target.value }))} className="fontPicker">
-    <option value="font-arial">Arial</option>
-    <option value="font-courier">Courier New</option>
-    <option value="font-georgia">Georgia</option>
-    <option value="font-times">Times New Roman</option>
-    <option value="font-verdana">Verdana</option>
-    <option value="font-comic">Comic Sans MS</option>
-</select> */}
+<label>Days Font</label>
+<select onChange={(e) => e.target.value === labelFonts ? setFonts(prev => ({ 
+    ...prev, 
+    daysNumFont: numberFonts, 
+    daysLabelFont: labelFonts 
+})) :
+setFonts(prev => ({ 
+  ...prev, 
+  daysNumFont: e.target.value, 
+  daysLabelFont: e.target.value 
+}))} className="fontPicker">
+    <option value={labelFonts}>Default</option>
+    <option value="'Courier New', Courier, monospace">Courier New</option>
+    <option value="'Georgia', serif">Georgia</option>
+    <option value="'Times New Roman', Times, serif">Times New Roman</option>
+    <option value="'Verdana', sans-serif">Verdana</option>
+    <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+</select>
 
-{/* <label>Hours Font</label>
-<select value={hoursFont} onChange={(e) => setHoursFont(e.target.value)} className="fontPicker">
-    <option value="font-arial">Arial</option>
-    <option value="font-courier">Courier New</option>
-    <option value="font-georgia">Georgia</option>
-    <option value="font-times">Times New Roman</option>
-    <option value="font-verdana">Verdana</option>
-    <option value="font-comic">Comic Sans MS</option>
+<label>Hours Font</label>
+<select onChange={(e) => e.target.value === labelFonts ? setFonts(prev => ({ 
+    ...prev, 
+    hoursNumFont: numberFonts, 
+    hoursLabelFont: labelFonts 
+})) : setFonts(prev => ({ 
+  ...prev, 
+  hoursNumFont: e.target.value, 
+  hoursLabelFont: e.target.value 
+}))} className="fontPicker">
+    <option value={labelFonts}>Default</option>
+    <option value="'Courier New', Courier, monospace">Courier New</option>
+    <option value="'Georgia', serif">Georgia</option>
+    <option value="'Times New Roman', Times, serif">Times New Roman</option>
+    <option value="'Verdana', sans-serif">Verdana</option>
+    <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
 </select>
 
 <label>Minutes Font</label>
-<select value={minutesFont} onChange={(e) => setMinutesFont(e.target.value)} className="fontPicker">
-    <option value="font-arial">Arial</option>
-    <option value="font-courier">Courier New</option>
-    <option value="font-georgia">Georgia</option>
-    <option value="font-times">Times New Roman</option>
-    <option value="font-verdana">Verdana</option>
-    <option value="font-comic">Comic Sans MS</option>
+<select onChange={(e) => e.target.value === labelFonts ? setFonts(prev => ({ 
+    ...prev, 
+    minutesNumFont: numberFonts, 
+    minutesLabelFont: labelFonts 
+})) : setFonts(prev => ({ 
+  ...prev, 
+  minutesNumFont: e.target.value, 
+  minutesLabelFont: e.target.value 
+}))} className="fontPicker">
+    <option value={labelFonts}>Default</option>
+    <option value="'Courier New', Courier, monospace">Courier New</option>
+    <option value="'Georgia', serif">Georgia</option>
+    <option value="'Times New Roman', Times, serif">Times New Roman</option>
+    <option value="'Verdana', sans-serif">Verdana</option>
+    <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
 </select>
 
 <label>Seconds Font</label>
-<select value={secondsFont} onChange={(e) => setSecondsFont(e.target.value)} className="fontPicker">
-    <option value="font-arial">Arial</option>
-    <option value="font-courier">Courier New</option>
-    <option value="font-georgia">Georgia</option>
-    <option value="font-times">Times New Roman</option>
-    <option value="font-verdana">Verdana</option>
-    <option value="font-comic">Comic Sans MS</option>
-</select> */}
-{/* </div> */}
+<select onChange={(e) => e.target.value === labelFonts ? setFonts(prev => ({ 
+    ...prev, 
+    secondsNumFont: numberFonts, 
+    secondsLabelFont: labelFonts 
+})):  setFonts(prev => ({ 
+  ...prev, 
+  secondsNumFont: e.target.value, 
+  secondsLabelFont: e.target.value 
+}))} className="fontPicker">
+    <option value={labelFonts}>Default</option>
+    <option value="'Courier New', Courier, monospace">Courier New</option>
+    <option value="'Georgia', serif">Georgia</option>
+    <option value="'Times New Roman', Times, serif">Times New Roman</option>
+    <option value="'Verdana', sans-serif">Verdana</option>
+    <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+</select>
+</div>
 
 
 
@@ -260,7 +297,7 @@ const storeBackground = (file) => {
       <div className="mainContent">
         <CountdownTimer selectedDate={selectedDate} />
       </div>
-      <TextCustomizer colours={colours} fontSizes={fontSizes}/>
+      <TextCustomizer colours={colours} fontSizes={fontSizes} fonts={fonts}/>
 
     </div>
   );
