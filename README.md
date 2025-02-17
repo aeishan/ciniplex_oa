@@ -22,7 +22,7 @@ A **customizable countdown timer** built with **React**, featuring real-time upd
 
 ### **Default Countdown View**
 
-![Default View](https://via.placeholder.com/800x400?text=Default+View)
+![Default View](https://cdn.discordapp.com/attachments/1149095512302166157/1340917334600060948/image.png?ex=67b41a15&is=67b2c895&hm=939ec003a1609d9b0de6fe4705ba70f279972b60fdd4a4c75bd01b5d26fe8957&)
 
 ### **Customizable Settings Panel**
 
