@@ -97,7 +97,7 @@ const handleFontUpload = (file) => {
 
 
 
-
+  const options = ["days", "hours", "minutes", "seconds"];
   const [background, setBackground] = useState(loadFromLocalStorage("background", null));
   const [backgroundFileName, setBackgroundFileName] = useState(localStorage.getItem("backgroundFileName") || null);
 
@@ -277,126 +277,66 @@ const handleFontUpload = (file) => {
             {backgroundFileName ? `Selected: ${backgroundFileName}` : "Choose File"}
           </label>
 
-          <h1>Change colours for each coumter</h1>
+          <h1>Change Colours for Each Counter</h1>
 <div className="color-picker-container">
-  {/* Days Color */}
-  <div className="color-picker-wrapper">
-    <label>Days Colour</label>
-    <input type="color" value={colours.daysNumColour} onChange={(e) => setColours(prev => ({ ...prev, daysNumColour: e.target.value, daysLabelColour: e.target.value }))} />
-  </div>
-
-  {/* Hours Color */}
-  <div className="color-picker-wrapper">
-    <label>Hours Colour</label>
-    <input type="color" value={colours.hoursNumColour} onChange={(e) => setColours(prev => ({ ...prev, hoursNumColour: e.target.value, hoursLabelColour: e.target.value }))} />
-  </div>
-
-  {/* Minutes Color */}
-  <div className="color-picker-wrapper">
-    <label>Minutes Colour</label>
-    <input type="color" value={colours.minutesNumColour} onChange={(e) => setColours(prev => ({ ...prev, minutesNumColour: e.target.value, minutesLabelColour: e.target.value }))} />
-  </div>
-
-  {/* Seconds Color */}
-  <div className="color-picker-wrapper">
-    <label>Seconds Colour</label>
-    <input type="color" value={colours.secondsNumColour} onChange={(e) => setColours(prev => ({ ...prev, secondsNumColour: e.target.value, secondsLabelColour: e.target.value }))} />
-  </div>
+  {options.map((unit) => (
+    <div className="color-picker-wrapper" key={unit}>
+      <label>{unit.charAt(0).toUpperCase() + unit.slice(1)} Colour</label>
+      <input 
+        type="color" 
+        value={colours[`${unit}NumColour`]} 
+        onChange={(e) => setColours(prev => ({ 
+          ...prev, 
+          [`${unit}NumColour`]: e.target.value, 
+          [`${unit}LabelColour`]: e.target.value 
+        }))} 
+      />
+    </div>
+  ))}
 </div>
 
 <h1>Change Font Sizes For Each Counter</h1>
 <div className="font-size-container">
-  <div className="font-size-wrapper">
-    <label className="font-size-label">Days Font Size</label>
-    <input type="number" value={fontSizes.daysNumFS === fontSizes.daysLabelFS ? parseInt(fontSizes.daysNumFS) : ""} onChange={(e) => setFontSizes(prev => ({ ...prev, daysNumFS: e.target.value + "px", daysLabelFS: e.target.value + "px" }))} />
-  </div>
-
-  <div className="font-size-wrapper">
-    <label className="font-size-label">Hours Font Size</label>
-    <input type="number" value={fontSizes.hoursNumFS === fontSizes.hoursLabelFS ? parseInt(fontSizes.hoursNumFS) : ""} onChange={(e) => setFontSizes(prev => ({ ...prev, hoursNumFS: e.target.value + "px", hoursLabelFS: e.target.value + "px" }))} />
-  </div>
-
-  <div className="font-size-wrapper">
-    <label className="font-size-label">Minutes Font Size</label>
-    <input type="number" value={fontSizes.minutesNumFS === fontSizes.minutesLabelFS ? parseInt(fontSizes.minutesNumFS) : ""} onChange={(e) => setFontSizes(prev => ({ ...prev, minutesNumFS: e.target.value + "px", minutesLabelFS: e.target.value + "px" }))} />
-  </div>
-
-  <div className="font-size-wrapper">
-    <label className="font-size-label">Seconds Font Size</label>
-    <input type="number" value={fontSizes.secondsNumFS === fontSizes.secondsLabelFS ? parseInt(fontSizes.secondsNumFS) : ""} onChange={(e) => setFontSizes(prev => ({ ...prev, secondsNumFS: e.target.value + "px", secondsLabelFS: e.target.value + "px" }))} />
-  </div>
+  {options.map((unit) => (
+    <div className="font-size-wrapper" key={unit}>
+      <label className="font-size-label">{unit.charAt(0).toUpperCase() + unit.slice(1)} Font Size</label>
+      <input 
+        type="number" 
+        value={fontSizes[`${unit}NumFS`] === fontSizes[`${unit}LabelFS`] ? parseInt(fontSizes[`${unit}NumFS`]) : ""}
+        onChange={(e) => setFontSizes(prev => ({ 
+          ...prev, 
+          [`${unit}NumFS`]: e.target.value + "px", 
+          [`${unit}LabelFS`]: e.target.value + "px" 
+        }))} 
+      />
+    </div>
+  ))}
 </div>
 
 <h1>Select Fonts for Each Counter</h1>
 <div className="font-picker-container">
-  {/* Days Font */}
-  <div className="font-picker-wrapper">
-    <label>Days Font</label>
-    <select onChange={(e) => setFonts(prev => ({ 
-      ...prev, 
-      daysNumFont: labelFonts === e.target.value ? numberFonts : e.target.value, 
-      daysLabelFont: e.target.value 
-    }))} className="fontPicker">
-      <option value={labelFonts}>Default</option>
-      <option value="'Courier New', Courier, monospace">Courier New</option>
-      <option value="'Georgia', serif">Georgia</option>
-      <option value="'Times New Roman', Times, serif">Times New Roman</option>
-      <option value="'Verdana', sans-serif">Verdana</option>
-      <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
-    </select>
-  </div>
-
-  {/* Hours Font */}
-  <div className="font-picker-wrapper">
-    <label>Hours Font</label>
-    <select onChange={(e) => setFonts(prev => ({ 
-      ...prev, 
-      hoursNumFont: labelFonts === e.target.value ? numberFonts : e.target.value, 
-      hoursLabelFont: e.target.value 
-    }))} className="fontPicker">
-      <option value={labelFonts}>Default</option>
-      <option value="'Courier New', Courier, monospace">Courier New</option>
-      <option value="'Georgia', serif">Georgia</option>
-      <option value="'Times New Roman', Times, serif">Times New Roman</option>
-      <option value="'Verdana', sans-serif">Verdana</option>
-      <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
-    </select>
-  </div>
-
-  {/* Minutes Font */}
-  <div className="font-picker-wrapper">
-    <label>Minutes Font</label>
-    <select onChange={(e) => setFonts(prev => ({ 
-      ...prev, 
-      minutesNumFont: labelFonts === e.target.value ? numberFonts : e.target.value, 
-      minutesLabelFont: e.target.value 
-    }))} className="fontPicker">
-      <option value={labelFonts}>Default</option>
-      <option value="'Courier New', Courier, monospace">Courier New</option>
-      <option value="'Georgia', serif">Georgia</option>
-      <option value="'Times New Roman', Times, serif">Times New Roman</option>
-      <option value="'Verdana', sans-serif">Verdana</option>
-      <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
-    </select>
-  </div>
-
-  {/* Seconds Font */}
-  <div className="font-picker-wrapper">
-    <label>Seconds Font</label>
-    <select onChange={(e) => setFonts(prev => ({ 
-      ...prev, 
-      secondsNumFont: labelFonts === e.target.value ? numberFonts : e.target.value, 
-      secondsLabelFont: e.target.value
-    }))} className="fontPicker">
-      <option value={labelFonts}>Default</option>
-      <option value="'Courier New', Courier, monospace">Courier New</option>
-      <option value="'Georgia', serif">Georgia</option>
-      <option value="'Times New Roman', Times, serif">Times New Roman</option>
-      <option value="'Verdana', sans-serif">Verdana</option>
-      <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
-    </select>
-  </div>
+  {options.map((unit) => (
+    <div className="font-picker-wrapper" key={unit}>
+      <label>{unit.charAt(0).toUpperCase() + unit.slice(1)} Font</label>
+      <select 
+        onChange={(e) => setFonts(prev => ({ 
+          ...prev, 
+          [`${unit}NumFont`]: labelFonts === e.target.value ? numberFonts : e.target.value, 
+          [`${unit}LabelFont`]: e.target.value 
+        }))} 
+        className="fontPicker"
+      >
+        <option value={labelFonts}>Default</option>
+        <option value="'Courier New', Courier, monospace">Courier New</option>
+        <option value="'Georgia', serif">Georgia</option>
+        <option value="'Times New Roman', Times, serif">Times New Roman</option>
+        <option value="'Verdana', sans-serif">Verdana</option>
+        <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+      </select>
+    </div>
+  ))}
 </div>
+
 
 <h1>Upload Custom Font</h1>
 <label className="custom-file-upload">

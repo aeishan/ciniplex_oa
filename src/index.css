@@ -1,109 +1,92 @@
+/* Global Styles */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+/* Root Variables */
 :root {
+  /* Colors */
   --days-number-colour: white;
   --days-label-colour: #ffcc00;
-
   --hours-number-colour: white;
   --hours-label-colour: #ffcc00;
-
   --minutes-number-colour: white;
   --minutes-label-colour: #ffcc00;
-
   --seconds-number-colour: white;
   --seconds-label-colour: #ffcc00;
 
+  /* Font Sizes */
   --days-number-font-size: 60px;
   --days-label-font-size: 26px;
-
   --hours-number-font-size: 60px;
   --hours-label-font-size: 26px;
-
   --minutes-number-font-size: 60px;
   --minutes-label-font-size: 26px;
-
   --seconds-number-font-size: 60px;
   --seconds-label-font-size: 26px;
 
+  /* Fonts */
   --days-number-font: 'Courier New';
   --days-label-font: -apple-system;
-
   --hours-number-font: 'Courier New';
   --hours-label-font: -apple-system;
-
   --minutes-number-font: 'Courier New';
   --minutes-label-font: -apple-system;
-
   --seconds-number-font: 'Courier New';
   --seconds-label-font: -apple-system;
 
+  /* Font Families */
   --number-font-family: 'Courier New', Courier, monospace;
   --label-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-  
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
+/* Date Picker */
 .dateSelector {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  /* vertical-align: middle; */
+  margin: 20px 0;
 }
 
+/* Main Content */
 .mainContent {
-  flex-grow: 1;  /* Takes remaining space */
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Countdown Timer */
 .timer {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* Make it responsive */
+  width: 100%;
   text-align: center;
 }
-/* 
-.timerContainer { */
-  /* display: flex; */
-  /* justify-content: center; Center all items */
-  /* align-items: center; */
-  /* gap: 40px; Increase spacing between boxes */
-  /* background: rgba(0, 0, 0, 0.7); */
-  /* padding: 30px 50px; Increase padding for a bigger background box */
-  /* border-radius: 15px; */
-  /* box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6); */
-/* } */
 
-.timerBackground {  /* make draggbale  and maybe combine with timerbox to simplify*/
+/* Timer Box & Background */
+.timerBackground {
   background: rgba(0, 0, 0, 0.7);
   padding: 30px 50px;
   border-radius: 15px;
   box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6);
-  /* Optional: keep each timer box from expanding too far */
-  display: inline-block; 
+  display: inline-block;
   margin: 10px;
 }
 
 .timerBox {
   position: relative;
-  background: rgba(70, 70, 70, 1); /* Dark background */
+  background: rgba(70, 70, 70, 1);
   padding: 25px 40px;
   border-radius: 12px;
   text-align: center;
@@ -113,25 +96,19 @@ code {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5); /* Individual glow effect */
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
 }
 
+/* Timer Labels & Numbers */
 .timerBox h2 {
-  /* font-size: 26px;  */
-  /* font-size: var(--days-number-font-size); */
   margin-bottom: 10px;
-  /* color: var(--days-label-colour); */
-  /* color: blue; */
 }
 
 .timerBox p {
-  /* font-size: 60px; */
-  /* font-size: var(--days-label-font-size); */
   font-weight: bold;
-  /* color: var(--days-number-colour); */
-  /* font-family: 'Courier New', Courier, monospace; */
 }
 
+/* Individual Timer Styles */
 .daysLabel {
   color: var(--days-label-colour);
   font-size: var(--days-label-font-size);
@@ -144,23 +121,10 @@ code {
   font-family: var(--days-number-font, var(--number-font-family));
 }
 
-
 .hoursLabel {
   color: var(--hours-label-colour);
   font-size: var(--hours-label-font-size);
   font-family: var(--hours-label-font, var(--label-font-family));
-}
-
-.minutesLabel {
-  color: var(--minutes-label-colour);
-  font-size: var(--minutes-label-font-size);
-  font-family: var(--minutes-label-font, var(--label-font-family));
-}
-
-.secondsLabel {
-  color: var(--seconds-label-colour);
-  font-size: var(--seconds-label-font-size);
-  font-family: var(--seconds-label-font, var(--label-font-family));
 }
 
 .hoursNum {
@@ -169,10 +133,22 @@ code {
   font-family: var(--hours-number-font, var(--number-font-family));
 }
 
+.minutesLabel {
+  color: var(--minutes-label-colour);
+  font-size: var(--minutes-label-font-size);
+  font-family: var(--minutes-label-font, var(--label-font-family));
+}
+
 .minutesNum {
   color: var(--minutes-number-colour);
   font-size: var(--minutes-number-font-size);
   font-family: var(--minutes-number-font, var(--number-font-family));
+}
+
+.secondsLabel {
+  color: var(--seconds-label-colour);
+  font-size: var(--seconds-label-font-size);
+  font-family: var(--seconds-label-font, var(--label-font-family));
 }
 
 .secondsNum {
@@ -181,49 +157,32 @@ code {
   font-family: var(--seconds-number-font, var(--number-font-family));
 }
 
+/* Background File (Image or Video) */
 .fileBg {
-  position: absolute;  /* ensures video doesn't move while scrolling */
-  top: 0;
-  left: 0%;
-  width: 100%;
-  height: 100vh;  /* make image fit screen height (if possible) */
-  object-fit: fill;  /* makes video fill the screen */
-  z-index: -1;  /* makes video as the background */
-}
-
-/* .img-bg{
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   object-fit: fill;
   z-index: -1;
-} */
+}
 
+/* Video Uploader */
 .videoUploader {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
+/* Application Layout */
 .appContainer {
   display: flex;
   flex-direction: row;
   height: 100vh;
 }
 
-/* .sidebar {
-  width: 15%; */
-  /* min-width: 200px; Prevent it from shrinking too much (MAYBE KEEP) */
-  /* background-color: rgb(207, 87, 18);
-  opacity: 0.8;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-
+/* Countdown Container */
 .countdownContainer {
   flex-grow: 1;
   display: flex;

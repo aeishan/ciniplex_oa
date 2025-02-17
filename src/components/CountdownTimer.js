@@ -1,83 +1,55 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Draggable from 'react-draggable';
 
 const CountdownTimer = ({ selectedDate }) => {
     const [timer, setTimer] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-    useEffect(() => {
-        calculateDiff();
+    // Memoized function to prevent unnecessary re-creations
+    const updateTimer = useCallback(() => {
+        if (!selectedDate) {
+            setTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+            return;
+        }
+
+        const diff = new Date(selectedDate) - new Date();
+        if (diff <= 0) {
+            setTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+            return;
+        }
+
+        setTimer(() => ({
+            days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((diff / (1000 * 60)) % 60),
+            seconds: Math.floor((diff / 1000) % 60),
+        }));
     }, [selectedDate]);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            calculateDiff();
-            // if (timer.days === -1 && timer.hours === -1 && timer.minutes === -1) {  // why does it go -1????
-            //     setTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-            // }
-        }, 1000);
+        if (!selectedDate) return;  // Ensure selectedDate exists before running
+        updateTimer();  // Instant update when selectedDate changes
+        const interval = setInterval(updateTimer, 1000);
         return () => clearInterval(interval);
-    }, [selectedDate]);
+    }, [selectedDate, updateTimer]);
 
-    const calculateDiff = () => {
-        if (!selectedDate) return;
-
-        const now = new Date();
-        const inputDate = new Date(selectedDate);
-
-        const diff = inputDate.getTime() - now.getTime();
-
-        // if (diff === 0) {
-        //     setTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        //     return;
-        // }
-
-        const totalSeconds = Math.floor(diff / 1000);
-        const totalMinutes = Math.floor(totalSeconds / 60);
-        const totalHours = Math.floor(totalMinutes / 60);
-        const days = Math.floor(totalHours / 24);
-
-        const seconds = totalSeconds % 60;
-        const minutes = totalMinutes % 60;
-        const hours = totalHours % 24;
-
-        // if (days === -1 && hours === -1 && minutes === -1 && seconds === -1) {
-        //     setTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        //     return;
-        // }
-
-        setTimer({ days, hours, minutes, seconds });
-    };
-
-    // Function to load saved positions
-    const loadPosition = (id) => {
-        const savedPositions = JSON.parse(localStorage.getItem("timerPositions")) || {};
-        return savedPositions[id] || { x: 0, y: 0 };
-    };
-
-    // Function to save position
+    const loadPosition = (id) => JSON.parse(localStorage.getItem("timerPositions"))?.[id] || { x: 0, y: 0 };
     const savePosition = (id, position) => {
-        const savedPositions = JSON.parse(localStorage.getItem("timerPositions")) || {};
-        savedPositions[id] = position;
-        localStorage.setItem("timerPositions", JSON.stringify(savedPositions));
+        const positions = JSON.parse(localStorage.getItem("timerPositions")) || {};
+        localStorage.setItem("timerPositions", JSON.stringify({ ...positions, [id]: position }));
     };
 
-    const DraggableBox = ({ id, children }) => {
-        const nodeRef = useRef(null);
+    const DraggableBox = ({ id, label, value }) => {
+        const nodeRef = useRef(null);  // Stores position so it doens't need to re-render everytime
         const [position, setPosition] = useState(loadPosition(id));
-    
-        const handleDrag = (e, data) => {
-            setPosition({ x: data.x, y: data.y });
-        };
-    
-        useEffect(() => {
-            savePosition(id, position);
-        }, [position, id]);
-    
+
+        useEffect(() => savePosition(id, position), [position, id]);
+
         return (
-            <Draggable nodeRef={nodeRef} position={position} onDrag={handleDrag}>
-                <div ref={nodeRef} className="timerBackground"> {/* Move Draggable Wrapper Here */}
+            <Draggable nodeRef={nodeRef} position={position} onDrag={(e, data) => setPosition({ x: data.x, y: data.y })}>
+                <div ref={nodeRef} className="timerBackground">
                     <div className="timerBox">
-                        {children}
+                        <h2 className={`${id}Label`}>{label}</h2>
+                        <p className={`${id}Num`}>{value}</p>
                     </div>
                 </div>
             </Draggable>
@@ -86,24 +58,9 @@ const CountdownTimer = ({ selectedDate }) => {
 
     return (
         <div className="timer">
-            {/* <div className="timerContainer"> */}
-            <DraggableBox id="days">
-                <h2 className="daysLabel">Days</h2>
-                <p className="daysNum">{timer.days}</p>
-            </DraggableBox>
-            <DraggableBox id="hours">
-                <h2 className="hoursLabel">Hours</h2>
-                <p className="hoursNum">{timer.hours}</p>
-            </DraggableBox>
-            <DraggableBox id="minutes">
-                <h2 className="minutesLabel">Minutes</h2>
-                <p className="minutesNum">{timer.minutes}</p>
-            </DraggableBox>
-            <DraggableBox id="seconds">
-                <h2 className="secondsLabel">Seconds</h2>
-                <p className="secondsNum">{timer.seconds}</p>
-            </DraggableBox>
-            {/* </div> */}
+            {["days", "hours", "minutes", "seconds"].map((unit) => (
+                <DraggableBox key={unit} id={unit} label={unit.charAt(0).toUpperCase() + unit.slice(1)} value={timer[unit]} />
+            ))}
         </div>
     );
 };
