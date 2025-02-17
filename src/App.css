@@ -1,0 +1,81 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.toggleSidebarBtn {
+  position: fixed;
+  top: 20px; /* Adjusted to avoid overlapping */
+  left: 20px; /* Keeps it aligned properly */
+  width: 120px; /* Wider for better text fit */
+  height: 40px; /* Rectangle shape */
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: none;
+  border-radius: 8px; /* Slightly rounded edges for modern look */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px; /* Ensures text fits well */
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.toggleSidebarBtn:hover {
+  background-color: rgba(0, 0, 0, 0.95);
+  transform: scale(1.05);
+}
+
+.toggleSidebarBtn span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-hidden {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+}
+
+.custom-file-upload input {
+  display: none; /* Hides the default file input */
+}
