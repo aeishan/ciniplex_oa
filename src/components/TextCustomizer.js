@@ -1,6 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
 const TextCustomizer = ({colours, fontSizes, fonts}) => {
+
+    useEffect(() => {
+        if (fonts.customFont) {
+        document.documentElement.style.setProperty("--days-number-font", fonts.customFont);  
+        document.documentElement.style.setProperty("--days-label-font", fonts.customFont);
+
+        document.documentElement.style.setProperty("--hours-number-font", fonts.customFont);  
+        document.documentElement.style.setProperty("--hours-label-font", fonts.customFont);
+
+        document.documentElement.style.setProperty("--minutes-number-font", fonts.customFont);  
+        document.documentElement.style.setProperty("--minutes-label-font", fonts.customFont);
+
+        document.documentElement.style.setProperty("--seconds-number-font", fonts.customFont);  
+        document.documentElement.style.setProperty("--seconds-label-font", fonts.customFont);
+        }
+    }, [fonts.customFont]);
+    
+
     useEffect(() => {
         document.documentElement.style.setProperty("--days-number-colour", colours.daysNumColour);  
         document.documentElement.style.setProperty("--days-label-colour", colours.daysLabelColour);

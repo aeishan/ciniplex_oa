@@ -48,6 +48,48 @@ const storeBackground = (file) => {
   }
 };
 
+const handleFontUpload = (file) => {
+  if (!file) return;
+
+  const type = file.name.split('.').pop();
+  if (type !== "ttf" && type !== "otf") {
+    alert("Invalid file type! Please upload a .ttf or .otf font.");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const fontURL = e.target.result; // This is the Base64 Data URL
+    const fontName = file.name.split('.')[0].replace(/\s+/g, '-');
+
+    try {
+      const newFont = new FontFace(fontName, `url(${fontURL})`);
+      await newFont.load();
+      document.fonts.add(newFont);
+
+      setFonts(prev => ({
+        ...prev,
+        customFont: fontName,         // Correctly store the font name
+        customFontName: file.name,    // Store the actual filename
+      }));
+
+      // Save to localStorage
+      localStorage.setItem("customFont", fontName);
+      localStorage.setItem("customFontFile", fontURL);
+      localStorage.setItem("customFontName", file.name); // Store only the filename, not the URL
+    } catch (error) {
+      console.error("Error loading font:", error);
+    }
+  };
+
+  reader.readAsDataURL(file);
+};
+
+
+
+
+
+
   const [background, setBackground] = useState(loadFromLocalStorage("background", null));
   const [backgroundFileName, setBackgroundFileName] = useState(localStorage.getItem("backgroundFileName") || null);
 
@@ -90,9 +132,40 @@ const storeBackground = (file) => {
       minutesNumFont: numberFonts,
       minutesLabelFont: labelFonts,
       secondsNumFont: numberFonts,
-      secondsLabelFont: labelFonts
+      secondsLabelFont: labelFonts,
+      customFont: "",
+      customFontName: null
     })
   );
+
+  useEffect(() => {
+    const loadCustomFont = async () => {
+      const storedFontName = localStorage.getItem("customFont"); // Font name
+      const storedFontFile = localStorage.getItem("customFontFile"); // Base64 Data URL
+      const storedFontRealName = localStorage.getItem("customFontName"); // Actual file name
+  
+      if (storedFontName && storedFontFile && storedFontRealName) {
+        try {
+          const newFont = new FontFace(storedFontName, `url(${storedFontFile})`);
+          await newFont.load();
+          document.fonts.add(newFont);
+  
+          setFonts(prev => ({
+            ...prev,
+            customFont: storedFontName,
+            customFontName: storedFontRealName // Ensure this is the actual filename
+          }));
+        } catch (error) {
+          console.error("Error loading stored font:", error);
+        }
+      }
+    };
+  
+    loadCustomFont();
+  }, []);
+  
+  
+  
   
 
   useEffect(() => {
@@ -209,7 +282,7 @@ const storeBackground = (file) => {
 <label>Days Font</label>
 <div>
 <label>Days Font</label>
-<select onChange={(e) => e.target.value === labelFonts ? setFonts(prev => ({ 
+<select onChange={(e) => e.target.value === labelFonts ? setFonts(prev => ({   // onChange should kinda be setFonts(prev => ({ ...prev, daysNumFont: e.target.value !== labelFonts ? e.target.value : numberFonts }))}
     ...prev, 
     daysNumFont: numberFonts, 
     daysLabelFont: labelFonts 
@@ -281,6 +354,17 @@ setFonts(prev => ({
     <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
 </select>
 </div>
+
+<h1>Upload Custom Font</h1>
+<label className="custom-file-upload">
+  <input 
+    type="file" 
+    accept=".ttf, .otf" 
+    onChange={(e) => handleFontUpload(e.target.files[0])} 
+  />
+  {fonts.customFontName ? `Selected: ${fonts.customFontName}` : "Choose File"}
+</label>
+
 
 
 
