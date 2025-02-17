@@ -221,7 +221,7 @@ const handleFontUpload = (file) => {
       {/* Sidebar */}
       {isSidebarVisible && (
         <div className="sidebar">
-          <h1>Select a Date and Time!</h1>
+          <h1>Select a date and time</h1>
           <DatePicker 
   showYearDropdown 
   scrollableMonthYearDropdown 
@@ -267,7 +267,7 @@ const handleFontUpload = (file) => {
 
 
 
-          <h1>Upload a background</h1>
+          <h1>Upload a background (.png or .mp4)</h1>
           <label className="custom-file-upload">
             <input 
               type="file" 
@@ -277,34 +277,34 @@ const handleFontUpload = (file) => {
             {backgroundFileName ? `Selected: ${backgroundFileName}` : "Choose File"}
           </label>
 
-          <h1>Upload a colour</h1>
+          <h1>Change colours for each coumter</h1>
 <div className="color-picker-container">
   {/* Days Color */}
   <div className="color-picker-wrapper">
-    <label>Days Color</label>
+    <label>Days Colour</label>
     <input type="color" value={colours.daysNumColour} onChange={(e) => setColours(prev => ({ ...prev, daysNumColour: e.target.value, daysLabelColour: e.target.value }))} />
   </div>
 
   {/* Hours Color */}
   <div className="color-picker-wrapper">
-    <label>Hours Color</label>
+    <label>Hours Colour</label>
     <input type="color" value={colours.hoursNumColour} onChange={(e) => setColours(prev => ({ ...prev, hoursNumColour: e.target.value, hoursLabelColour: e.target.value }))} />
   </div>
 
   {/* Minutes Color */}
   <div className="color-picker-wrapper">
-    <label>Minutes Color</label>
+    <label>Minutes Colour</label>
     <input type="color" value={colours.minutesNumColour} onChange={(e) => setColours(prev => ({ ...prev, minutesNumColour: e.target.value, minutesLabelColour: e.target.value }))} />
   </div>
 
   {/* Seconds Color */}
   <div className="color-picker-wrapper">
-    <label>Seconds Color</label>
+    <label>Seconds Colour</label>
     <input type="color" value={colours.secondsNumColour} onChange={(e) => setColours(prev => ({ ...prev, secondsNumColour: e.target.value, secondsLabelColour: e.target.value }))} />
   </div>
 </div>
 
-<h1>Change the font size</h1>
+<h1>Change Font Sizes For Each Counter</h1>
 <div className="font-size-container">
   <div className="font-size-wrapper">
     <label className="font-size-label">Days Font Size</label>
@@ -327,7 +327,7 @@ const handleFontUpload = (file) => {
   </div>
 </div>
 
-<h1>Select Fonts for Each Section</h1>
+<h1>Select Fonts for Each Counter</h1>
 <div className="font-picker-container">
   {/* Days Font */}
   <div className="font-picker-wrapper">

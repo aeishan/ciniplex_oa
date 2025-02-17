@@ -204,3 +204,21 @@
   display: flex;
   justify-content: center;
 }
+
+.color-picker-wrapper,
+.font-size-wrapper,
+.font-picker-wrapper {
+  margin-bottom: 6px; /* Adds slight space below each element */
+}
+
+/* Increase gap between rows of color pickers and font pickers */
+.color-picker-container,
+.font-picker-container {
+  row-gap: 6px; /* Adds space between rows */
+  column-gap: 6px; /* Adds space between columns */
+}
+
+/* Add spacing between font size input fields */
+.font-size-container input {
+  margin-bottom: 6px; /* Ensures slight gap between input boxes */
+}
