@@ -39,7 +39,7 @@ const CountdownTimer = ({ selectedDate }) => {
     };
 
     const DraggableBox = ({ id, label, value }) => {
-        const nodeRef = useRef(null);  // Stores position so it doens't need to re-render everytime
+        const nodeRef = useRef(null);  // Stores position so it doesn't need to re-render everytime
         const [position, setPosition] = useState(loadPosition(id));
 
         useEffect(() => savePosition(id, position), [position, id]);

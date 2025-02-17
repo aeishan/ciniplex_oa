@@ -162,14 +162,6 @@ const handleFontUpload = (file) => {
             ...prev,
             customFont: storedFontName,
             customFontName: storedFontRealName, // Ensure this is the actual filename
-            // daysNumFont: storedFontName,
-            // daysLabelFont: storedFontName,
-            // hoursNumFont: storedFontName,
-            // hoursLabelFont: storedFontName,
-            // minutesNumFont: storedFontName,
-            // minutesLabelFont: storedFontName,
-            // secondsNumFont: storedFontName,
-            // secondsLabelFont: storedFontName
           }));
         } catch (error) {
           console.error("Error loading stored font:", error);
@@ -179,9 +171,6 @@ const handleFontUpload = (file) => {
   
     loadCustomFont();
   }, []);
-  
-  
-  
   
 
   useEffect(() => {
@@ -228,8 +217,8 @@ const handleFontUpload = (file) => {
   minDate={new Date()} 
   minTime={
     selectedDate && new Date(selectedDate).toDateString() === new Date().toDateString()
-      ? new Date() // If today, restrict minTime to current time
-      : new Date(new Date().setHours(0, 0, 0, 0)) // Otherwise, allow from 00:00
+      ? new Date(new Date().setHours(0, 0, 0, 0))
+      : new Date(new Date().setHours(0, 0, 0, 0))
   }
   maxTime={new Date(new Date().setHours(23, 59, 59))}
   showTimeSelect 
@@ -242,27 +231,42 @@ const handleFontUpload = (file) => {
       const now = new Date();
       const selected = new Date(date);
 
-      // not recognizing midnight as a time selected
       if (
         selected.getHours() === 0 && 
         selected.getMinutes() === 0 &&
         selected.getSeconds() === 0
       ) {
-        // if (selected.toDateString() === now.toDateString()) {
-        //   // If it's today, set the time to the current time
-        //   selected.setHours(now.getHours(), now.getMinutes(), now.getSeconds());
-        // } else {
-        //   // If it's a future date, keep the time as 00:00
-        //   selected.setHours(0, 0, 0);
-        // }
-        selected.setHours(now.getHours(), now.getMinutes(), now.getSeconds());
-
+        selected.setHours(0, 0, 0);
       }
-
       setSelectedDate(selected);
     }
   }} 
+  renderCustomHeader={({ date, decreaseMonth, increaseMonth, changeYear }) => {
+    const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - 50 + i);
+
+    return (
+      <div className="custom-datepicker-header">
+        <div className="month-header">
+          <button onClick={decreaseMonth} className="prev-month-btn">‹</button>
+          <span className="month-label">{date.toLocaleString('default', { month: 'long' })}</span>
+          <button onClick={increaseMonth} className="next-month-btn">›</button>
+        </div>
+        <select
+          className="year-dropdown"
+          value={date.getFullYear()}
+          onChange={({ target: { value } }) => changeYear(Number(value))}
+        >
+          {years.map(year => (
+            <option key={year} value={year}>{year}</option>
+          ))}
+        </select>
+      </div>
+    );
+  }}
 />
+
+
+
 
 
 
