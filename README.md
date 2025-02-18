@@ -139,6 +139,7 @@ The next task in this tier was to use `localStorage` to preserve user preference
 - Users will use a screen size that can comfortably display all required components.
 - Users will adjust the text size as needed (it may become unreadable if excessively large, but this is only possible if the user intentionally increases it to such an extent).
 - The user has `Node.js` and all required dependencies installed to run React projects successfully.
+- If a user selects a new date without specifying a time, the default time is automatically set to **midnight (00:00)**, marking the start of the selected day.
 
 ---
 
@@ -151,6 +152,12 @@ The next task in this tier was to use `localStorage` to preserve user preference
 - Implementing a **database** to store and retrieve user-generated stylistic presets, enabling users to save their settings for future use.  
 - Introducing a **login system** to enhance personalization, allowing users to access and manage their customized settings across different sessions.  
 - Implementing **file security measures** to scan uploaded files and prevent potential security threats, ensuring a safe user experience.  
+
+---
+
+## ℹ️ Additional Information
+
+- Running `npm start` may display warnings in the console. These warnings originate from `react-datepicker` and its associated styles. However, they **do not impact the functionality** of the website in any way.
 
 ---
 
