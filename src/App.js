@@ -93,10 +93,6 @@ const handleFontUpload = (file) => {
   reader.readAsDataURL(file);
 };
 
-
-
-
-
   const options = ["days", "hours", "minutes", "seconds"];
   const [background, setBackground] = useState(loadFromLocalStorage("background", null));
   const [backgroundFileName, setBackgroundFileName] = useState(localStorage.getItem("backgroundFileName") || null);
@@ -129,8 +125,8 @@ const handleFontUpload = (file) => {
   );
   const numberFonts = "'Courier New', Courier, monospace";
   const labelFonts = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif";
-
   const [isSidebarVisible, setIsSidebarVisible] = useState(loadFromLocalStorage("isSidebarVisible", true));
+
   const [fonts, setFonts] = useState(
     loadFromLocalStorage("fonts", {
       daysNumFont: numberFonts,
@@ -177,7 +173,6 @@ const handleFontUpload = (file) => {
     localStorage.setItem("fonts", JSON.stringify(fonts));
   }, [fonts]);
 
-
   // Save settings whenever they change
   useEffect(() => {
     localStorage.setItem("background", JSON.stringify(background));
@@ -210,7 +205,7 @@ const handleFontUpload = (file) => {
       {/* Sidebar */}
       {isSidebarVisible && (
         <div className="sidebar">
-          <h1>Select a date and time</h1>
+          <h1>Select a Date and Time</h1>
           <DatePicker 
   showYearDropdown 
   scrollableMonthYearDropdown 
@@ -271,7 +266,7 @@ const handleFontUpload = (file) => {
 
 
 
-          <h1>Upload a background (.png or .mp4)</h1>
+          <h1>Upload a Background (.png or .mp4)</h1>
           <label className="custom-file-upload">
             <input 
               type="file" 
@@ -281,7 +276,7 @@ const handleFontUpload = (file) => {
             {backgroundFileName ? `Selected: ${backgroundFileName}` : "Choose File"}
           </label>
 
-          <h1>Change Colours for Each Counter</h1>
+          <h1>Change Colours</h1>
 <div className="color-picker-container">
   {options.map((unit) => (
     <div className="color-picker-wrapper" key={unit}>
@@ -299,7 +294,7 @@ const handleFontUpload = (file) => {
   ))}
 </div>
 
-<h1>Change Font Sizes For Each Counter</h1>
+<h1>Change Font Sizes</h1>
 <div className="font-size-container">
   {options.map((unit) => (
     <div className="font-size-wrapper" key={unit}>
@@ -317,7 +312,7 @@ const handleFontUpload = (file) => {
   ))}
 </div>
 
-<h1>Select Fonts for Each Counter</h1>
+<h1>Select Fonts</h1>
 <div className="font-picker-container">
   {options.map((unit) => (
     <div className="font-picker-wrapper" key={unit}>

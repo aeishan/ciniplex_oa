@@ -1,3 +1,4 @@
+/* Sidebar Styling */
 .sidebar {
   width: 15%;
   min-width: 200px;
@@ -14,6 +15,7 @@
   opacity: 0.8;
 }
 
+/* Sidebar Titles & Labels */
 .sidebar h1 {
   font-size: 16px;
   font-weight: bold;
@@ -30,6 +32,7 @@
   display: block;
 }
 
+/* Sidebar Input Fields */
 .sidebar select,
 .sidebar input[type="number"],
 .sidebar input[type="color"] {
@@ -120,7 +123,7 @@
   transition: transform 0.3s ease-in-out;
 }
 
-/* Color Picker Grid */
+/* Color & Font Picker Grid */
 .color-picker-container,
 .font-picker-container {
   display: flex;
@@ -182,7 +185,7 @@
   background-color: #444;
 }
 
-/* Date Picker Input */
+/* Date Picker Styling */
 .react-datepicker__input-container input {
   width: 95%;
   min-width: 200px;
@@ -210,7 +213,7 @@
   padding: 5px 10px;
 }
 
-/* Flexbox to align arrows with month */
+/* Month Header (Aligns Arrows & Month) */
 .month-header {
   display: flex;
   align-items: center;
@@ -224,6 +227,7 @@
   font-weight: bold;
 }
 
+/* Month Navigation Buttons */
 .prev-month-btn,
 .next-month-btn {
   background: none;
@@ -239,7 +243,7 @@
   border-radius: 4px;
 }
 
-/* Style for the Year Dropdown */
+/* Year Dropdown Styling */
 .year-dropdown {
   width: 80px;
   padding: 6px;
@@ -251,4 +255,3 @@
   cursor: pointer;
   text-align: center;
 }
-
