@@ -1,4 +1,4 @@
-# 🎬 Ciniplex Countdown Timer
+# 🎬 Countdown Timer
 
 A **customizable countdown timer** built with **React**, featuring real-time updates, draggable elements, dynamic styling, and user preferences stored in **localStorage**. The app allows users to upload a **background image or video**, customize colours, fonts, and font sizes for the countdown, dynamically set dates and times, and even upload their own fonts.
 
